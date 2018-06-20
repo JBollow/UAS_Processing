@@ -9,6 +9,7 @@ backend/.idea/
 backend/npm-debug.log
 
 .idea/
+.vscode/
 
 # locally generated tiles (redundant)
 sat_data/
