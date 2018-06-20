@@ -1,11 +1,11 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "UAS Processing Frontend",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "lite-server"
+    "start": "lite-server -c bs-config.json"
   },
   "author": "",
   "license": "ISC",
