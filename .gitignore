@@ -1,15 +1,16 @@
 # front-end modules, logs etc.
-front-end/node_modules/
-front-end/.idea/
-front-end/npm-debug.log
+frontend/node_modules/
+frontend/.idea/
+frontend/npm-debug.log
 
 # back-end modules, logs etc
-back-end/node_modules/
-back-end/.idea/
-back-end/npm-debug.log
-back-end/data/
+backend/node_modules/
+backend/.idea/
+backend/npm-debug.log
+backend/results
 
 .idea/
+.vscode/
 
 # locally generated tiles (redundant)
 sat_data/

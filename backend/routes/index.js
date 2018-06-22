@@ -1,9 +1,41 @@
 var express = require('express');
 var router = express.Router();
+var shell = require('shelljs');
+var randomstring = require("randomstring");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Processing and Analysis Workflows for UAS-Borne Spatial Data' });
+router.get('/', function (req, res, next) {
+  res.send('Processing and Analysis Workflows for UAS-Borne Spatial Data');
+});
+
+router.get('/ndvi', function (req, res) {
+  var randomname;
+  var randomqgis;
+  //TODO get photos, start WebODM (or just get a tif)
+  //run a docker qgis ndvi image
+  randomqgis = randomstring.generate(7);
+  shell.exec('docker run --name ' + randomqgis + ' nuest/docker-qgis-model:example', function (code, stdout, stderr) {
+    console.log('Exit code:', code);
+    if (stdout || code == 0) {
+      console.log('Program output:', stdout);
+
+      //copy the files to a local directory
+      randomname = randomstring.generate(7);
+      shell.exec('docker cp ' + randomqgis + ':/workspace/results results/' + randomname, function (code, stdout, stderr) {
+        console.log('copied');
+        shell.exec('docker rm ' + randomqgis, function (code, stdout, stderr) {});
+        //TODO Start GDALtotiles? Give feedback
+      });
+
+    };
+    if (stderr) {
+      console.log('Program stderr:', stderr);
+    }
+
+    res.send(randomname);
+  });
+
+  // TODO same for the 3D
 });
 
 module.exports = router;
