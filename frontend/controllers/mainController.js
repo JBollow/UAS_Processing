@@ -42,7 +42,7 @@ angular.module("main").controller("mainController", ['$scope', 'restService', 'l
         },
         markers: $scope.markers,
         defaults: {
-            tileLayer: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+            tileLayer: "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
             zoomControlPosition: 'bottomright',
             tileLayerOptions: {
                 opacity: 0.9,
@@ -54,13 +54,15 @@ angular.module("main").controller("mainController", ['$scope', 'restService', 'l
         layers: {
             baselayers: {
                 Esri_WorldTopoMap: {
-                    name: 'Esri WorldTopoMap',
-                    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+                    name: 'googleSat',
+                    url: 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
                     attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community',
                     type: 'xyz',
                     layerOptions: {
                         minZoom: 3,
-                        maxZoom: 13,
+                        maxZoom: 21,
+                        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+                        noWrap: true
                         // apikey: ,
                         // mapid: ''
                     }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html ng-app="App">
+
+<head>
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+    <!-- for bootstrap in CSP mode -->
+    <!-- <link rel="stylesheet" href="./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" /> -->
+    <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"> -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <meta charset="utf-8">
+    <title>Processing and Analysis Workflows for UAS-Borne Spatial Data</title>
+</head>
+
+<body>
+
+    <div class="jumbotron text-center">
+
+        <div class="container-fluid">
+            <div class="row">
+                <h2>Processing and Analysis Workflows for UAS-Borne Spatial Data</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <div class="box" style="width: 600px;">
+                        <input type="file" style="display: inline;" multiple />
+                        <button type="button" style="display: inline;">Upload</button>
+                    </div>
+
+                    <button type="button">Do orthophoto</button>
+
+                    <button type="button">Do NDVI</button>
+
+                    <button type="button">Do LAS</button>
+
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+    </div>
+
+</body>
+
+
+</html>
