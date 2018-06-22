@@ -62,7 +62,8 @@ angular.module("main").controller("mainController", ['$scope', 'restService', 'l
                         minZoom: 3,
                         maxZoom: 21,
                         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-                        noWrap: true
+                        noWrap: true,
+                        maxZoom: 20,
                         // apikey: ,
                         // mapid: ''
                     }
