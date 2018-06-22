@@ -1,6 +1,6 @@
 angular.module("App", ['main', 'ngRoute']);
 
-angular.module("main", ['ngRoute']);
+angular.module("main", ['ngRoute', 'leaflet-directive']);
 
 
 // configure our routes
