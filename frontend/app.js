@@ -2,10 +2,6 @@ angular.module("App", ['main', 'ngRoute']);
 
 angular.module("main", ['ngRoute']);
 
-angular.module("main").controller("mainController", function ($scope) {
-    // Controller body
-    $scope.message = "yay!";
-});
 
 // configure our routes
 angular.module("main").config(function ($routeProvider) {
