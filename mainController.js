@@ -60,7 +60,7 @@ angular.module("main").controller("mainController", ['$scope', 'restService', 'l
                     type: 'xyz',
                     layerOptions: {
                         minZoom: 3,
-                        maxZoom: 13,
+                        maxZoom: 20,
                         // apikey: ,
                         // mapid: ''
                     }
