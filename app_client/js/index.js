@@ -4,7 +4,7 @@ var shell = require('shelljs');
 var randomstring = require("randomstring");
 var fs = require('fs');
 var path = require('path');
-var imagesDirectory = path.join(__dirname, '../../docker_images/docker-qgis-model/workspace/example');
+var imagesDirectory = path.join('"' + __dirname + '"', '../../docker_images/docker-qgis-model/workspace/example');
 // F:\Bilder\2018\may\tumblr_inline_oqwf99a1Iu1ty99rh_540.png
 
 router.post('/ndvi', function (req, res) {
@@ -31,7 +31,7 @@ router.post('/ndvi', function (req, res) {
         //rename the image
         console.log(filename);
         shell.exec('ls', function (code, stdout, stderr) {
-          shell.exec('mv ' + filename + " orthophoto.jpg", function (code, stdout, stderr) {
+          shell.exec('mv ' + filename + " orthophoto.tif", function (code, stdout, stderr) {
             console.log("four");
             if (!stderr) {
               console.log("five");

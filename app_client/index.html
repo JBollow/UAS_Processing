@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<html ng-app="App">
-
+<html>
 <head>
     <!-- load bootstrap and fontawesome via CDN -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
@@ -39,13 +38,22 @@
             <div class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
-                    <div class="box" style="width: 600px;">
-                        <form>
-                            Den Pfad zu dem Ordner mit der Tiff-Datei eingeben:
-                            <br>
-                            <input type="text" name="path" id="path" style="display: inline;">
-                        </form>
-                    </div>
+
+                    <table>
+                        <tr>
+                            <td>
+                                <lable class="formlable" for="inputpath">Eingabepfad angeben:</lable>
+                                <input class="pfad" type="text" name="path" id="inputpath" placeholder="C:\Orthophoto.tif" style="float: right;">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="padding-top: 10px;">
+                                <lable class="formlable" for="outputpath">Ausgabepfad angeben:</lable>
+                                <input class="pfad" type="text" name="path" id="outputpath" placeholder="C:\" style="float: right;">
+                            </td>
+                        </tr>
+                    </table>
 
                     <button type="button" onclick="odm()" disabled>Orthophoto rechnen</button>
 
@@ -62,6 +70,4 @@
     </div>
 
 </body>
-
-
 </html>
