@@ -1,24 +1,17 @@
-/**
- *  @author Jan-Patrick Bollow 349891
- */
-
 const express = require('express');
 var router = express.Router();
-
 var shell = require('shelljs');
 var randomstring = require("randomstring");
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  res.send('Processing and Analysis Workflows for UAS-Borne Spatial Data');
-});
+var randomqgis;
+randomqgis = randomstring.generate(7);
+console.log(randomqgis);
 
 router.post('/ndvi', function (req, res) {
   var filepath = request.body
   var randomname;
   var randomqgis;
 
-  
   // //TODO get photos, start WebODM (or just get a tif)
   // //run a docker qgis ndvi image
   // randomqgis = randomstring.generate(7);
@@ -45,6 +38,5 @@ router.post('/ndvi', function (req, res) {
 
   // TODO same for the 3D
 });
-
 
 module.exports = router;
