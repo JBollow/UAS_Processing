@@ -6,7 +6,6 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var index = require('./app_client/js/index');
-var indexbackend = require('./routes/index');
 
 var app = express();
 
@@ -39,7 +38,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app_client')));
-
 
 app.use('/', index);
 
