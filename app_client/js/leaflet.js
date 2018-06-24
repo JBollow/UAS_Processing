@@ -20,7 +20,7 @@ function initMap() {
   });
 
   L.control.zoom({
-    position: 'bottomright'
+    position: 'bottomleft'
   }).addTo(map);
 
 };

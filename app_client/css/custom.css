@@ -28,12 +28,13 @@ body {
 
 h1 {
     font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-    font-size: 22px;
+    font-size: 60px;
     font-style: normal;
     font-variant: normal;
-    font-weight: 400;
-    line-height: 22px;
+    font-weight: 800;
+    line-height: 72px;
     color: #404040;
+    float: left;
 }
 
 h2 {
@@ -78,19 +79,9 @@ p {
     position: relative;
 }
 
-.box {
-    background-color: rgb(224, 224, 224);
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 1px solid black;
-    margin-top: 10px;
-}
-
 .container-fluid {
-    z-index: 5;
-    background-color: #ffffff;
+    z-index: 50;
+    background-color: rgba(224, 224, 224, 0.97);
 }
 
 #map {
@@ -104,8 +95,83 @@ p {
 }
 
 #mainContainer {
-    position: relative;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
     z-index: 500;
+    padding: 20px 50px 20px 20px;
+}
+
+.inputbox {
+    float: right;
+}
+
+.menubox {
+    float: right;
+}
+
+.buttonwhite {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 20px;
+    height: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
+.buttonwhite:hover {
+    background-color: #0098d4;
+    color: white;
+}
+
+.buttonwhite:active {
+    background-color: #0098d4;
+    transform: translateY(2px);
+}
+
+.buttonwhitedis {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 20px;
+    height: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #f3f3f3;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 0px;
+    text-decoration: line-through
+}
+
+.buttonwhitedis:hover {
+    background-color: #d40075;
+    color: white;
+}
+
+.buttonwhitedis:active {
+    background-color: #d40075;
+    transform: translateY(2px);
 }
 
 .pfad {
@@ -116,4 +182,105 @@ p {
     font-weight: 500;
     line-height: 15.4px;
     color: #404040;
+    float: right;
+}
+
+.pfad:hover {
+    background-color: #0098d4;
+    color: white;
+}
+
+.pfad:active {
+    background-color: #0098d4;
+}
+
+.pfad:hover::-webkit-input-placeholder {
+    color: #f3f3f3;
+}
+
+.swalCc {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif !important;
+    background-color: rgba(255, 255, 255, 1.0) !important;
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+}
+
+.swal2-confirm {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif !important;
+    font-size: 18px !important;
+    font-style: normal !important;
+    font-weight: 100 !important;
+    line-height: 20px !important;
+    height: 40px !important;
+    width: 140px !important;
+    margin-top: 20px !important;
+    margin-bottom: 0px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    color: #fff !important;
+    border: none !important;
+    cursor: pointer !important;
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+    background-color: #008dc5 !important;
+}
+
+.swal2-confirm:hover {
+    background-color: #0074a1 !important;
+}
+
+.swal2-cancel {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif !important;
+    font-size: 18px !important;
+    font-style: normal !important;
+    font-weight: 100 !important;
+    line-height: 20px !important;
+    height: 40px !important;
+    width: 140px !important;
+    margin-top: 20px !important;
+    margin-bottom: 0px !important;
+    margin-left: 10px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    color: #fff !important;
+    border: none !important;
+    cursor: pointer !important;
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+    background-color: #008dc5 !important;
+}
+
+.swal2-cancel:hover {
+    background-color: #0074a1 !important;
+}
+
+.swalCc {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif !important;
+    background-color: rgba(255, 255, 255, 1.0) !important;
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+}
+
+div.processing {
+    visibility: hidden;
+    position: absolute;
+    bottom: 20px;
+    right: 2px;
+    z-index: 800;
+    width: 178px;
+    height: 64px;
+    padding: 2px;
+    background-color: rgba(255, 255, 255, 0.97);
+    border: 2px solid rgba(0, 0, 20, 0.25);
+}
+
+.loader {
+    border: 11px solid rgba(0, 0, 20, 0.25);
+    border-radius: 50%;
+    border-top: 11px solid #3498db;
+    width: 56px;
+    height: 56px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
 }
