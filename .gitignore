@@ -1,12 +1,8 @@
-# front-end modules, logs etc.
-frontend/node_modules/
-frontend/.idea/
-frontend/npm-debug.log
-
 # back-end modules, logs etc
-backend/node_modules/
-backend/.idea/
-backend/npm-debug.log
+node_modules/
+.idea/
+npm-debug.log
+results
 
 .idea/
 .vscode/
