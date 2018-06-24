@@ -23,13 +23,15 @@ router.post('/ndvi', function (req, res) {
       res.status(500).send(stderr);
     } else {
       //navigating to the folder to execute the next steps there
-      shell.exec('cd ' + imagesDirectory, function (code, stdout, stderr) {
-        console.log("two");
-        if (!stderr) {
-          console.log("three");
-          var filename = data.path.replace(/^.*[\\\/]/, '');
-          //rename the image
-          shell.exec('rename ' + filename + " orthophoto.jpg", function (code, stdout, stderr) {
+      shell.cd('docker_images/docker-qgis-model/workspace/example');
+      console.log("two");
+      if (!stderr) {
+        console.log("three");
+        var filename = data.path.replace(/^.*[\\\/]/, '');
+        //rename the image
+        console.log(filename);
+        shell.exec('ls', function (code, stdout, stderr) {
+          shell.exec('mv ' + filename + " orthophoto.jpg", function (code, stdout, stderr) {
             console.log("four");
             if (!stderr) {
               console.log("five");
@@ -60,14 +62,13 @@ router.post('/ndvi', function (req, res) {
                     if (stderr) {
                       console.log('Program stderr:', stderr);
                     }
-                    res.send(randomname);
                   });
                 }
               });
             }
           });
-        }
-      });
+        });
+      }
 
     }
   });;

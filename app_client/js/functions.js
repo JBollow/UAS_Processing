@@ -28,7 +28,7 @@ function ndvi() {
                 console.log("nope");
             }
         },
-        timeout: 5000
+        timeout: 0
     });
 }
 
