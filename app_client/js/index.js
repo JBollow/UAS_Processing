@@ -13,13 +13,7 @@ router.post('/ndvi', function (req, res) {
   console.log(data.path);
 
   shell.exec('cp ' + data.path + " " + imagesDirectory, function (code, stdout, stderr) {
-    if (code) {
-      console.log("code" + code);
-    } else if (stdout) {
-      console.log("stdout" + stdout);
-    } else if (stderr) {
-      console.log("err");
-      console.log(stderr);
+    if (stderr) {
       res.status(500).send(stderr);
     } else {
       //navigating to the folder to execute the next steps there
@@ -29,47 +23,44 @@ router.post('/ndvi', function (req, res) {
         console.log("three");
         var filename = data.path.replace(/^.*[\\\/]/, '');
         //rename the image
-        console.log(filename);
-        shell.exec('ls', function (code, stdout, stderr) {
-          shell.exec('mv ' + filename + " orthophoto.jpg", function (code, stdout, stderr) {
+        shell.exec('mv ' + filename + " orthophoto.jpg", function (code, stdout, stderr) {
+          if (!stderr) {
             console.log("four");
-            if (!stderr) {
-              console.log("five");
-              //do the computations
-              var randomname;
-              var randomqgis;
-              //run a docker qgis ndvi image
-              randomqgis = randomstring.generate(7);
-              shell.exec('docker build -t qgis-model-example .', function (code, stdout, stderr) {
-                console.log("six");
-                if (!stderr) {
-                  console.log("seven");
-                  shell.exec('docker run --name ' + randomqgis + ' qgis-model-example', function (code, stdout, stderr) {
-                    console.log("eight");
-                    console.log('Exit code:', code);
-                    if (stdout || code == 0) {
-                      console.log('Program output:', stdout);
-                      //copy the files to a local directory
-                      randomname = randomstring.generate(7);
-                      shell.exec('docker cp ' + randomqgis + ':/results results/' + randomname, function (code, stdout, stderr) {
-                        console.log("nine");
-                        console.log('copied');
-                        shell.exec('docker rm ' + randomqgis, function (code, stdout, stderr) {});
-                        //TODO Start GDALtotiles? Give feedback
+            //do the computations
+            var randomqgis;
+            randomqgis = randomstring.generate(7);
+            //run a build a qgis docker image
+            shell.exec('docker build -t qgis-model-example .', function (code, stdout, stderr) {
+              if (!stderr) {
+                console.log("five");
+                //run a docker qgis ndvi image
+                shell.exec('docker run --name ' + randomqgis + ' qgis-model-example', function (code, stdout, stderr) {
+                  if (stdout || code == 0) {
+                    console.log("six");
+                    //copy the files to a local directory
+                    shell.exec('docker cp ' + randomqgis + ':/results results', function (code, stdout, stderr) {
+                      console.log("seven");
+                      shell.exec('docker rm ' + randomqgis, function (code, stdout, stderr) {
+                        console.log("eight");
+                        res.send("Fertig!");
                       });
-
-                    };
-                    if (stderr) {
-                      console.log('Program stderr:', stderr);
-                    }
-                  });
-                }
-              });
-            }
-          });
+                    });
+                  } else if (stderr) {
+                    console.log('Program stderr:', stderr);
+                    res.status(500).send(stderr);
+                  }
+                });
+              } else {
+                res.status(500).send(stderr);
+              }
+            });
+          } else {
+            res.status(500).send(stderr);
+          }
         });
+      } else {
+        res.status(500).send(stderr);
       }
-
     }
   });;
 });

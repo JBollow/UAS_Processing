@@ -17,12 +17,14 @@ function ndvi() {
         traditional: true,
         cache: false,
         processData: false,
-        success: function () {
+        success: function (data) {
             console.log("yep");
+            alert(data.responseText);
         },
         error: function (error) {
             if (error.status === 200) {
                 console.log("yep");
+                alert(error.responseText);
             } else {
                 console.log(error);
                 console.log("nope");
