@@ -81,7 +81,7 @@ p {
 
 .container-fluid {
     z-index: 50;
-    background-color: rgba(224, 224, 224, 0.97);
+    background-color: rgba(224, 224, 224, 0.8);
 }
 
 #map {

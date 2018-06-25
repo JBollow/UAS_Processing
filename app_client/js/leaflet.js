@@ -12,7 +12,7 @@ function initMap() {
 
   // Map
   map = L.map('map', {
-    center: [51.963090, 7.622603],
+    center: [51.946, 7.572],
     zoom: 16,
     minZoom: 8,
     maxZoom: 22,

@@ -59,28 +59,40 @@ router.post('/ndvi', function (req, res) {
 
                       shell.exec('docker rm ' + randomqgis, function (code, stdout, stderr) {
                         console.log("eight");
+                        navigateBack();
                         res.send("NDVI Berechnung abgeschlossen!");
                       });
                     });
                   } else if (stderr) {
                     console.log('Program stderr:', stderr);
+                    navigateBack();
                     res.status(500).send(stderr);
                   }
                 });
               } else {
+                navigateBack();
                 res.status(500).send(stderr);
               }
             });
           } else {
+            navigateBack();
             res.status(500).send(stderr);
           }
         });
       } else {
+        navigateBack();
         res.status(500).send(stderr);
       }
     }
   });;
 });
+
+navigateBack = function () {
+  shell.cd("..");
+  shell.cd("..");
+  shell.cd("..");
+  shell.cd("..");
+}
 
 router.post('/las', function (req, res) {
   res.send("Under construction!");
@@ -93,10 +105,12 @@ router.post('/tiles', function (req, res) {
 
   var randomtile;
   randomtile = randomstring.generate(7);
- 
+  console.log("list directory");
+  shell.exec("ls");
   // Achtung Processes anpassen!!
-  shell.exec('python scripts/gdal2tiles_multi.py --profile=mercator -z 14-22 --processes=32 ' + data.path + " app_client/tiles/" + randomtile, function (code, stdout, stderr) {
+  shell.exec('python scripts/gdal2tiles_multi.py --profile=mercator -z 14-22 --processes=8 ' + data.path + " app_client/tiles/" + randomtile, function (code, stdout, stderr) {
     if (stderr) {
+      console.log(stderr);
       res.status(500).send(stderr);
     } else {
       res.send(randomtile);
