@@ -229,3 +229,11 @@ function tiles() {
     }
 
 }
+
+shapefile = function () {
+    $(".processing").css("visibility", "visible");
+    shp("./AnnasShape.zip").then(function (geojson) {
+        addShapefile(geojson.features);
+        console.log(geojson);
+    });
+}
