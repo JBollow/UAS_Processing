@@ -76,6 +76,84 @@ function ndvi() {
     }
 }
 
+function ndvivector() {
+    var JSONtoPOST = {
+        "path": $('#inputpath').val(),
+        "output": $('#outputpath').val(),
+    };
+
+    console.log(JSONtoPOST);
+
+    if ($('#inputpath').val() === "" || $('#outputpath').val() === "") {
+        swal({
+            titel: 'Error',
+            text: 'Pfad eingeben!',
+            type: 'error',
+            customClass: 'swalCc',
+            buttonsStyling: false,
+        });
+    } else {
+
+        swal({
+            position: 'bottom-end',
+            type: 'info',
+            title: 'Arbeit begonnen!',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        $(".processing").css("visibility", "visible");
+
+
+        // Post to local mongodb via nodejs using our own POST
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:7002/ndvivector",
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(JSONtoPOST),
+            traditional: true,
+            cache: false,
+            processData: false,
+            success: function (data) {
+                console.log("yep");
+                swal({
+                    titel: 'Info!',
+                    text: data.responseText,
+                    type: 'success',
+                    customClass: 'swalCc',
+                    buttonsStyling: false,
+                });
+                $(".processing").css("visibility", "hidden");
+            },
+            error: function (error) {
+                if (error.status === 200) {
+                    console.log("yep");
+                    swal({
+                        titel: 'Info!',
+                        text: error.responseText,
+                        type: 'success',
+                        customClass: 'swalCc',
+                        buttonsStyling: false
+                    });
+                    $(".processing").css("visibility", "hidden");
+                } else {
+                    console.log(error);
+                    swal({
+                        titel: 'Error',
+                        text: error.responseText,
+                        type: 'error',
+                        customClass: 'swalCc',
+                        buttonsStyling: false
+                    });
+                    $(".processing").css("visibility", "hidden");
+                }
+            },
+            timeout: 0
+        });
+
+    }
+}
+
 function las() {
     var JSONtoPOST = {
         "path": $('#inputpath').val(),
