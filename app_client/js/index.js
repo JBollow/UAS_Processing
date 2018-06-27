@@ -180,7 +180,6 @@ router.post('/las', function (req, res) {
 router.post('/tiles', function (req, res) {
   var data = req.body;
   console.log(data.path);
-  console.log(data.output);
 
   var randomtile;
   randomtile = randomstring.generate(7);

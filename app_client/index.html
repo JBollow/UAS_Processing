@@ -64,7 +64,7 @@
                 <h1>UAS-Toolbox</h1>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-3">
 
                 <div class="row">
                     <div class="inputbox">
@@ -96,6 +96,32 @@
                         <button class="buttonwhite" type="button" onclick="ndvi()">NDVI</button>
                         <button class="buttonwhite" type="button" onclick="ndvivector()">NDVI Vector</button>
                         <button class="buttonwhitedis" type="button" onclick="las()">LAS</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-3">
+
+                <div class="row">
+                    <div class="inputbox">
+                        <table style="margin-top: 12px;">
+                            <tr>
+                                <td>
+                                    <form>
+                                        <lable class="formlable2" for="inputpath2">Eingabepfad angeben:</lable><br>
+                                        <input class="pfad" type="text" name="path" id="inputpath2" placeholder="C:\Result.tif or Shapeordner">
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="menubox">
                         <button class="buttonwhite" type="button" onclick="tiles()">Tiles</button>
                         <button class="buttonwhite" type="button" onclick="shapefile()">Shapefile</button>
                     </div>
@@ -120,7 +146,7 @@
             </tr>
         </table>
     </div>
-    
+
 </body>
 
 </html>

@@ -42,7 +42,4 @@ function addTileLayer(folder) {
 function addShapefile(geojson) {
   var shapes = L.geoJSON(geojson).addTo(map);
   $(".processing").css("visibility", "hidden");
-  // .bindPopup(function (layer) {
-  //   return layer.feature.properties.ELEV;
-  // }).addTo(map);
 };

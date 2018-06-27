@@ -232,13 +232,12 @@ function odm() {
 
 function tiles() {
     var JSONtoPOST = {
-        "path": $('#inputpath').val(),
-        "output": $('#outputpath').val(),
+        "path": $('#inputpath2').val()
     };
 
     console.log(JSONtoPOST);
 
-    if ($('#inputpath').val() === "") {
+    if ($('#inputpath2').val() === "") {
         swal({
             titel: 'Error',
             text: 'Pfad eingeben!',
@@ -309,9 +308,21 @@ function tiles() {
 }
 
 shapefile = function () {
-    $(".processing").css("visibility", "visible");
-    shp("./AnnasShape.zip").then(function (geojson) {
-        addShapefile(geojson.features);
-        console.log(geojson);
-    });
+    if ($('#inputpath2').val() === "") {
+        swal({
+            titel: 'Error',
+            text: 'Pfad eingeben!',
+            type: 'error',
+            customClass: 'swalCc',
+            buttonsStyling: false,
+        });
+    } else {
+        $(".processing").css("visibility", "visible");
+        var folder = $('#inputpath2').val();
+        shp(folder).then(function (geojson) {
+            addShapefile(geojson.features);
+            console.log(geojson);
+        });
+    }
+
 }
