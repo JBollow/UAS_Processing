@@ -1,13 +1,17 @@
 # UAS_Processing
 Processing and Analysis Workflows for UAS-Borne Spatial Data
 
-<<<<<<< HEAD
-=======
-A little tool that should be able to use:
+A little tool that combines:
 
 - Docker ODM/WebODM for othomosaik generation
 - Docker QGIS for NDVI and LAS operations
 - GDAL2Tiles for tileserver generation
+
+### Requirements
+
+- Docker
+- Python
+- WebODM
 
 ### Credits
 
@@ -15,7 +19,6 @@ A little tool that should be able to use:
 - https://github.com/nuest/docker-qgis-model
     
 
->>>>>>> develop
 ## License
 
 MIT License
