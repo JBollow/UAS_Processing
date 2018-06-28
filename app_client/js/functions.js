@@ -26,7 +26,7 @@ function ndvi() {
         $(".processing").css("visibility", "visible");
 
 
-        // Post to local mongodb via nodejs using our own POST
+        // Post via nodejs using our own POST
         $.ajax({
             type: "POST",
             url: "http://localhost:7002/ndvi",
@@ -104,7 +104,7 @@ function ndvivector() {
         $(".processing").css("visibility", "visible");
 
 
-        // Post to local mongodb via nodejs using our own POST
+        // Post via nodejs using our own POST
         $.ajax({
             type: "POST",
             url: "http://localhost:7002/ndvivector",
@@ -162,7 +162,7 @@ function las() {
 
     console.log(JSONtoPOST);
 
-    // Post to local mongodb via nodejs using our own POST
+    // Post via nodejs using our own POST
     $.ajax({
         type: "POST",
         url: "http://localhost:7002/las",
@@ -200,7 +200,7 @@ function odm() {
 
     console.log(JSONtoPOST);
 
-    // Post to local mongodb via nodejs using our own POST
+    // Post via nodejs using our own POST
     $.ajax({
         type: "POST",
         url: "http://localhost:7002/odm",
@@ -257,7 +257,7 @@ function tiles() {
 
         $(".processing").css("visibility", "visible");
 
-        // Post to local mongodb via nodejs using our own POST
+        // Post to via nodejs using our own POST
         $.ajax({
             type: "POST",
             url: "http://localhost:7002/tiles",
@@ -317,12 +317,71 @@ shapefile = function () {
             buttonsStyling: false,
         });
     } else {
+        var JSONtoPOST = {
+            "path": $('#inputpath2').val()
+        };
+
         $(".processing").css("visibility", "visible");
-        var folder = $('#inputpath2').val();
-        shp("AnnasShape.zip").then(function (geojson) {
-            addShapefile(geojson.features);
-            console.log(geojson);
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:7002/copyshape",
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(JSONtoPOST),
+            success: function (data) {
+                shp("shapefile/shape.zip").then(function (geojson) {
+                    addShapefile(geojson.features);
+                    console.log(geojson);
+                    clearShapes();
+                });
+            },
+            error: function (error, errorThrown) {
+                console.log(errorThrown);
+                if (error.status === 200) {
+                    shp("shapefile/shape.zip").then(function (geojson) {
+                        addShapefile(geojson.features);
+                        console.log(geojson);
+                        clearShapes();
+                    });
+                } else {
+                    console.log(error);
+                    swal({
+                        titel: 'Error',
+                        text: error.responseText,
+                        type: 'error',
+                        customClass: 'swalCc',
+                        buttonsStyling: false
+                    });
+                    $(".processing").css("visibility", "hidden");
+                }
+            },
+            timeout: 0
         });
     }
+
+}
+
+clearShapes = function () {
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:7002/deleteshape",
+        dataType: 'json',
+        contentType: 'application/json',
+        data: null,
+        traditional: true,
+        cache: false,
+        processData: false,
+        success: function (data) {
+            console.log("shape deleted");
+        },
+        error: function (error) {
+            if (error.status === 200) {
+                console.log("shape deleted");
+            } else {
+                console.log(error);
+            }
+        },
+        timeout: 0
+    });
 
 }

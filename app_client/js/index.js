@@ -6,6 +6,8 @@ var fs = require('fs');
 var path = require('path');
 var imagesDirectory = path.join('"' + __dirname + '"', '../../docker_images/ndvi/docker-qgis-model/workspace/example');
 var imagesDirectory2 = path.join('"' + __dirname + '"', '../../docker_images/ndvivector/docker-qgis-model/workspace/example');
+var shapesDirectory = path.join('"' + __dirname + '"', '../../app_client/shapefile');
+var main = path.join('"' + __dirname + '"');
 
 router.post('/odm', function (req, res) {
   res.send("Under construction!");
@@ -194,8 +196,45 @@ router.post('/tiles', function (req, res) {
       res.send(randomtile);
     }
   });
+});
 
+router.post('/copyshape', function (req, res) {
+  var data = req.body;
+  console.log(data.path);
+  shell.exec('cp ' + data.path + " " + shapesDirectory, function (code, stdout, stderr) {
+    if (stderr) {
+      navigateBack();
+      console.log(stderr);
+      res.status(500).send(stderr);
+    } else {
+      var filename = data.path.replace(/^.*[\\\/]/, '');
+      shell.cd(main);
+      shell.exec("ls");
+      //rename the archive
+      shell.cd("app_client/shapefile");
+      shell.exec('mv ' + filename + " shape.zip", function (code, stdout, stderr) {
+        if (stderr) {
+          console.log(stderr);
+          shell.cd(main);
+          res.status(500).send(stderr);
+        } else {
+          shell.cd(main);
+          res.send({code: "Yay!"});
+        }
+      });
+    }
+  });
+});
 
+router.post('/deleteshape', function (req, res) {
+  shell.exec('rm ' + shapesDirectory + "/shape.zip", function (code, stdout, stderr) {
+    if (stderr) {
+      console.log(stderr);
+      res.status(500).send(stderr);
+    } else {
+      res.status(200).send({code: "Shapes no more"});
+    }
+  });
 });
 
 module.exports = router;
