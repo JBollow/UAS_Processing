@@ -270,7 +270,7 @@ function tiles() {
             success: function (data) {
                 swal({
                     titel: 'Info!',
-                    text: data.responseText,
+                    text: 'Tiles gerechnet und in die Karte geladen.',
                     type: 'success',
                     customClass: 'swalCc',
                     buttonsStyling: false,
@@ -282,7 +282,7 @@ function tiles() {
                 if (error.status === 200) {
                     swal({
                         titel: 'Info!',
-                        text: error.responseText,
+                        text: 'Tiles gerechnet und in die Karte geladen.',
                         type: 'success',
                         customClass: 'swalCc',
                         buttonsStyling: false
