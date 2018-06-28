@@ -40,10 +40,8 @@ h1 {
 h2 {
     font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-size: 20px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    line-height: 15.4px;
+    font-weight: 800;
+    line-height: 20px;
     color: #404040;
 }
 
@@ -79,9 +77,21 @@ p {
     position: relative;
 }
 
+.formlable2 {
+    padding-right: 15px;
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26px;
+    color: #404040;
+    position: relative;
+}
+
 .container-fluid {
     z-index: 50;
-    background-color: rgba(224, 224, 224, 0.97);
+    background-color: rgba(224, 224, 224, 0.8);
 }
 
 #map {
@@ -100,9 +110,16 @@ p {
     right: 0;
     width: 100%;
     z-index: 500;
-    padding: 20px 50px 20px 20px;
+    padding: 00px 80px 20px 20px;
 }
 
+#inputpath2 {
+    width: 207px;
+}
+
+.rechtsunten{
+    float: bottom;
+}
 .inputbox {
     float: right;
 }
@@ -270,8 +287,13 @@ div.processing {
     width: 178px;
     height: 64px;
     padding: 2px;
-    background-color: rgba(255, 255, 255, 0.97);
+    background-color: rgba(255, 255, 255, 0.8);
     border: 2px solid rgba(0, 0, 20, 0.25);
+}
+
+.box{
+    background-color: rgba(255, 255, 255, 0.3); 
+
 }
 
 .loader {

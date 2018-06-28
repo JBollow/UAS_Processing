@@ -3,6 +3,7 @@ node_modules/
 .idea/
 npm-debug.log
 results
+app_client/tiles
 
 .idea/
 .vscode/
