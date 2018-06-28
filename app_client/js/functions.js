@@ -319,7 +319,7 @@ shapefile = function () {
     } else {
         $(".processing").css("visibility", "visible");
         var folder = $('#inputpath2').val();
-        shp(folder).then(function (geojson) {
+        shp("AnnasShape.zip").then(function (geojson) {
             addShapefile(geojson.features);
             console.log(geojson);
         });
