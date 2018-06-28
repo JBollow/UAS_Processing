@@ -231,8 +231,16 @@ function odm() {
 }
 
 function tiles() {
+    
+    var logicalprocesses = window.navigator.hardwareConcurrency;
+    var processes = $('#processesPath').va();
+    if (processes > logicalprocesses) {
+        processes = logicalprocesses;
+    }
+
     var JSONtoPOST = {
-        "path": $('#inputpath2').val()
+        "path": $('#inputpath2').val(),
+        "processes": processes
     };
 
     console.log(JSONtoPOST);
@@ -270,7 +278,7 @@ function tiles() {
             success: function (data) {
                 swal({
                     titel: 'Info!',
-                    text: data.responseText,
+                    text: 'Tiles gerechnet und in die Karte geladen.',
                     type: 'success',
                     customClass: 'swalCc',
                     buttonsStyling: false,
@@ -282,7 +290,7 @@ function tiles() {
                 if (error.status === 200) {
                     swal({
                         titel: 'Info!',
-                        text: error.responseText,
+                        text: 'Tiles gerechnet und in die Karte geladen.',
                         type: 'success',
                         customClass: 'swalCc',
                         buttonsStyling: false

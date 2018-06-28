@@ -61,7 +61,7 @@
 
             <div class="col-sm-6">
                 <div style="margin-top: 20px;">
-                    <img src="img/drone.png" width="250" style="float: left;">
+                    <img src="img/drone.png" width="80" style="float: left; margin-right: 30px;">
                     <h1>UAS-Toolbox</h1>
                 </div>
             </div>
@@ -119,15 +119,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <tr>
-                                    <td>
-                                        <form>
-                                            <lable class="formlable2" for="inputpath2">Eingabepfad angeben:</lable>
-                                            <br>
-                                            <input class="pfad" type="text" name="path" id="inputpath2" placeholder="C:\Result.tif or Shapeordner">
-                                        </form>
-                                    </td>
-                                </tr>
+                                <td>
+                                    <form>
+                                        <lable class="formlable2" for="inputpath2">Eingabepfad angeben:</lable>
+                                        <br>
+                                        <input class="pfad" type="text" name="path" id="inputpath2" placeholder="C:\Result.tif or Shapeordner">
+                                    </form>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                 </div>
@@ -137,6 +136,7 @@
                 <div class="row">
                     <div class="menubox">
                         <button class="buttonwhite" type="button" onclick="tiles()">Tiles</button>
+                        <input class="processes" type="number" name="processes" id="processesPath" step="1">
                         <button class="buttonwhite" type="button" onclick="shapefile()">Shapefile</button>
                     </div>
                 </div>
