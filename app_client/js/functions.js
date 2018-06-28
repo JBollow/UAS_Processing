@@ -231,8 +231,16 @@ function odm() {
 }
 
 function tiles() {
+    
+    var logicalprocesses = window.navigator.hardwareConcurrency;
+    var processes = $('#processesPath').va();
+    if (processes > logicalprocesses) {
+        processes = logicalprocesses;
+    }
+
     var JSONtoPOST = {
-        "path": $('#inputpath2').val()
+        "path": $('#inputpath2').val(),
+        "processes": processes
     };
 
     console.log(JSONtoPOST);

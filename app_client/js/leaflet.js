@@ -1,6 +1,10 @@
 var map;
 
 function initMap() {
+  var logicalprocesses = window.navigator.hardwareConcurrency;
+  document.getElementById("processesPath").placeholder = logicalprocesses;
+  document.getElementById("processesPath").max = logicalprocesses;
+  document.getElementById("processesPath").min = 4;
 
   // Basemap
   var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
