@@ -181,14 +181,14 @@ router.post('/las', function (req, res) {
 
 router.post('/tiles', function (req, res) {
   var data = req.body;
-  console.log(data.path);
-
+  console.log(data);
+  
   var randomtile;
   randomtile = randomstring.generate(7);
   console.log("list directory");
   shell.exec("ls");
   // Achtung Processes anpassen!!
-  shell.exec('python scripts/gdal2tiles_multi.py --profile=mercator -z 14-22 --processes=32 ' + data.path + " app_client/tiles/" + randomtile, function (code, stdout, stderr) {
+  shell.exec('python scripts/gdal2tiles_multi.py --profile=mercator -z 14-22 --processes=' + data.processes + ' ' + data.path + " app_client/tiles/" + randomtile, function (code, stdout, stderr) {
     if (stderr) {
       console.log(stderr);
       res.status(500).send(stderr);

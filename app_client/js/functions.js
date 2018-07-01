@@ -233,8 +233,8 @@ function odm() {
 function tiles() {
     
     var logicalprocesses = window.navigator.hardwareConcurrency;
-    var processes = $('#processesPath').va();
-    if (processes > logicalprocesses) {
+    var processes = $('#processesPath').val();
+    if (processes > logicalprocesses || processes === "") {
         processes = logicalprocesses;
     }
 
